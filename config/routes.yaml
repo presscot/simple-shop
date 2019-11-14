@@ -11,7 +11,7 @@ new_product:
 
 edit_product:
     path: /admin/edit-product/{id}
-    controller: App\Controller\AdminController::editProduct
+    controller: App\Controller\AdminController::updateProduct
     requirements:
         id: '\d+'
 

@@ -47,7 +47,7 @@ class ProductFormType extends AbstractType
                 ]
             )
             ->add(
-                'Add',
+                $options['new'] ? 'Add' : 'Edit',
                 SubmitType::class
             )
         ;
@@ -60,7 +60,7 @@ class ProductFormType extends AbstractType
             array(
                 'data_class' => Product::class,
                 'error_bubbling' => true,
-                'new' => false
+                'new' => true
             )
         );
     }

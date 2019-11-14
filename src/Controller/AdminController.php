@@ -46,6 +46,8 @@ class AdminController extends AbstractController
         if( $handler->process()){
             $em->persist($product);
             $em->flush();
+
+            return $this->redirectToRoute("edit_product", ["id" => $product->getId()]);
         }
 
         return $this->render(
@@ -79,7 +81,25 @@ class AdminController extends AbstractController
         );
     }
 
-    public function updateProduct(){
+    public function updateProduct(Request $request){
+        $em = $this->getDoctrine()->getManager();
 
+        $product = $em->getRepository(Product::class)->find($request->get("id"));
+
+        $form = $this->createForm( ProductFormType::class , $product, ["new"=>false] );
+
+        $handler = new ProductFormHandler($request,$form);
+
+        if( $handler->process()){
+            $em->flush();
+        }
+
+        return $this->render(
+            'product/new_product.html.twig',
+            [
+                'form' => $form->createView(),
+                'product' => $product,
+            ]
+        );
     }
 }

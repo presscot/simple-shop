@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 class PaginatorTest extends TestCase
 {
-    public function testPaginatorWhenArgumentsValid():void{
+    public function testPaginatorWhenArgumentsIsValid():void{
 
         $product = new Product();
         $product->setName("test");
