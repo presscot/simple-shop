@@ -22,6 +22,8 @@
                         <th>name</th>
                         <th>description</th>
                         <th>Price</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,6 +33,8 @@
                             <td>{{ product.name }}</td>
                             <td>{{ product.description }}</td>
                             <td>{{ product.priceAsFloat | number_format(2, '.', ',') }}{% trans %}złoty{% endtrans %}</td>
+                            <td><a href="{{ path('edit_product', {id: product.getId() }) }}">edit</a></td>
+                            <td><a href="{{ path('remove_product', {id: product.getId() }) }}">remove</a></td>
                         </tr>
                     {% endfor %}
 

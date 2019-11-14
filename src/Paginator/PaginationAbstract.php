@@ -116,15 +116,7 @@ abstract class PaginationAbstract
         if ($to > $count) {
             $to = $count;
         }
-dump(            [
-    'count' => $count,
-    'from' => $from,
-    'to' => $to,
-    'page' => $page,
-    'max' => $max,
-    'pf' => $pf,
-    'pl' => $pl,
-]);
+
         return
             [
                 'count' => $count,
