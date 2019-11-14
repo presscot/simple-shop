@@ -43,7 +43,7 @@ class Paginator extends PaginationAbstract
     public function getCount(): int
     {
         if (null === $this->count) {
-            $this->count = count( $this->execute($this->getQueryBuilder()) );
+            $this->count = ( clone $this->getQueryBuilder() )->select("count(1)")->getQuery()->getSingleScalarResult();
         }
 
         return $this->count;
