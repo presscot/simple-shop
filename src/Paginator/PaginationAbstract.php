@@ -11,6 +11,8 @@ namespace App\Paginator;
 
 abstract class PaginationAbstract
 {
+    const numberOfHints = 5;
+
     /** @var string $name */
     private $name;
     /** @var int $page */
@@ -98,8 +100,8 @@ abstract class PaginationAbstract
         $offset = $this->getOffset();
 
         $max = (int)ceil($count / $limit);
-        $pf = $page - 5;
-        $pl = $page + 5 + ($pf < 0 ? abs($pf) + 1 : 0);
+        $pf = $page - self::numberOfHints;
+        $pl = $page + self::numberOfHints + ($pf < 0 ? abs($pf) + 1 : 0);
 
         if ($pl > $max) {
             $pf -= $pl - $max;
