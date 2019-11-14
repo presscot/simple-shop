@@ -59,26 +59,16 @@ class AdminController extends AbstractController
         );
     }
 
-    public function removeProduct(Product $product, Request $request){
+    public function removeProduct(Request $request){
         $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository(Product::class)->find($request->get("id"));
 
-
-        $form = $this->createForm( ProductFormType::class , $product );
-
-        $handler = new ProductFormHandler($request,$form);
-
-        if( $handler->process()){
-            $em->persist($product);
+        if( $product instanceof Product){
+            $em->remove($product);
             $em->flush();
         }
 
-        return $this->render(
-            'product/new_product.html.twig',
-            [
-                'form' => $form->createView(),
-                'product' => $product,
-            ]
-        );
+        return $this->redirectToRoute("index");
     }
 
     public function updateProduct(Request $request){
