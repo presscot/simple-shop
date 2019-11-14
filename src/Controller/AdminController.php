@@ -24,7 +24,7 @@ class AdminController extends AbstractController
         /** @var ProductRepository $repo */
         $repo = $this->getDoctrine()->getRepository(Product::class);
 
-        $paginator = new Paginator("p", $repo->defaultQueryList(), $request->query->get('page', 1) );
+        $paginator = new Paginator("p", $repo->defaultQueryList(), $request->get('page', 1) );
 
         return $this->render(
             'product/list.html.twig',

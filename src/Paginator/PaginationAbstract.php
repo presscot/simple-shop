@@ -85,7 +85,7 @@ abstract class PaginationAbstract
     /**
      * @return int
      */
-    public function getPage()
+    public function getPage(): int
     {
         return $this->page;
     }
@@ -97,7 +97,7 @@ abstract class PaginationAbstract
         $page = $this->getPage();
         $offset = $this->getOffset();
 
-        $max = ceil($count / $limit);
+        $max = (int)ceil($count / $limit);
         $pf = $page - 5;
         $pl = $page + 5 + ($pf < 0 ? abs($pf) + 1 : 0);
 
@@ -116,7 +116,15 @@ abstract class PaginationAbstract
         if ($to > $count) {
             $to = $count;
         }
-
+dump(            [
+    'count' => $count,
+    'from' => $from,
+    'to' => $to,
+    'page' => $page,
+    'max' => $max,
+    'pf' => $pf,
+    'pl' => $pl,
+]);
         return
             [
                 'count' => $count,

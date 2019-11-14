@@ -1,6 +1,9 @@
 index:
-    path: /admin
+    path: /admin/{page}
     controller: App\Controller\AdminController::list
+    defaults: { page: 1 }
+    requirements:
+        page: '\d+'
 
 new_product:
     path: /admin/new-product
