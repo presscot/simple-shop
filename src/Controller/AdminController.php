@@ -13,7 +13,6 @@ use App\Form\ProductFormHandler;
 use App\Form\ProductFormType;
 use App\Paginator\Paginator;
 use App\Repository\ProductRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 

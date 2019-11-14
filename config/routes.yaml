@@ -21,8 +21,12 @@ remove_product:
     requirements:
         id: '\d+'
 
-login:
+homepage:
     path: /
+    controller: App\Controller\ShopController::index
+
+login:
+    path: /login
     controller: App\Controller\SecurityController::login
 
 login_check:

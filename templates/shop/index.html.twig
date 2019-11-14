@@ -1,0 +1,72 @@
+{% extends "simple_base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin_dataTables') }}
+{% endblock stylesheets %}
+
+{% block content_header %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Starter Page</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ path('new_product') }}">login</a></li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+{% endblock content_header %}
+
+{% block page_content %}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">DataTable with default features</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    {% if 0 < paginator.getData()|length %}
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>name</th>
+                                <th>description</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for product in paginator.getData() %}
+                                <tr>
+                                    <td>{{ product.getId() }}</td>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.description }}</td>
+                                    <td>{{ product.priceAsFloat | number_format(2, '.', ',') }}{% trans %}złoty{% endtrans %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    {% else %}
+                        list of products is empty.
+                    {% endif %}
+                    {{ paginator_render( paginator ) }}
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+
+{% endblock page_content %}

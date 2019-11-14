@@ -7,46 +7,50 @@
 
 {% block page_content %}
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>name</th>
-                        <th>description</th>
-                        <th>Price</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for product in paginator.getData() %}
-                        <tr>
-                            <td>{{ product.getId() }}</td>
-                            <td>{{ product.name }}</td>
-                            <td>{{ product.description }}</td>
-                            <td>{{ product.priceAsFloat | number_format(2, '.', ',') }}{% trans %}złoty{% endtrans %}</td>
-                            <td><a href="{{ path('edit_product', {id: product.getId() }) }}">edit</a></td>
-                            <td><a href="{{ path('remove_product', {id: product.getId() }) }}">remove</a></td>
-                        </tr>
-                    {% endfor %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">DataTable with default features</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    {% if 0 < paginator.getData()|length %}
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>name</th>
+                                <th>description</th>
+                                <th>Price</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                    </tbody>
-                </table>
+                            {% for product in paginator.getData() %}
+                                <tr>
+                                    <td>{{ product.getId() }}</td>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.description }}</td>
+                                    <td>{{ product.priceAsFloat | number_format(2, '.', ',') }}{% trans %}złoty{% endtrans %}</td>
+                                    <td><a href="{{ path('edit_product', {id: product.getId() }) }}">edit</a></td>
+                                    <td><a href="{{ path('remove_product', {id: product.getId() }) }}">remove</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
 
-                {{ paginator_render( paginator ) }}
+                    {% else %}
+                        list of products is empty. <a href="{{ path('new_product') }}">Add Product</a>
+                    {% endif %}
+                    {{ paginator_render( paginator ) }}
+                </div>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
         </div>
-        <!-- /.card -->
     </div>
-</div>
 
 {% endblock page_content %}

@@ -25,7 +25,7 @@ Encore
             'admin-lte/plugins/fontawesome-free/css/all.min.css',
             'admin-lte/dist/css/adminlte.min.css'
         ]
-            .concat(glob.sync("./assets/css/scss/*.scss"))
+            .concat(glob.sync("./assets/scss/*.scss"))
     )
     .addStyleEntry('admin_dataTables',
         [

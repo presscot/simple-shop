@@ -1,0 +1,34 @@
+{% extends "layout.html.twig" %}
+
+{% use "bootstrap_4_layout.html.twig" %}
+
+{% block body %}
+
+    <body class="hold-transition sidebar-full">
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            {% block content_header %}{% endblock %}
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    {% block page_content %}{% endblock %}
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        {% include 'footer.html.twig' %}
+
+    </div>
+    <!-- 123 -->
+    {% block javascripts %}
+        {{ encore_entry_script_tags('admin_js') }}
+    {% endblock javascripts %}
+    <!-- 123 -->
+
+    </body>
+{% endblock body %}
