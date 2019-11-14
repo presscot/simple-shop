@@ -1,0 +1,29 @@
+index:
+    path: /admin
+    controller: App\Controller\AdminController::list
+
+new_product:
+    path: /admin/new-product
+    controller: App\Controller\AdminController::newProduct
+
+edit_product:
+    path: /admin/edit-product/{id}
+    controller: App\Controller\AdminController::editProduct
+    requirements:
+        id: '\d+'
+
+remove_product:
+    path: /admin/remove-product/{id}
+    controller: App\Controller\AdminController::removeProduct
+    requirements:
+        id: '\d+'
+
+login:
+    path: /
+    controller: App\Controller\SecurityController::login
+
+login_check:
+    path: /login_check
+
+logout:
+   path: /logout

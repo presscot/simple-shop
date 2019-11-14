@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin_dataTables') }}
+{% endblock stylesheets %}
+
+{% block page_content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">DataTable with default features</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>name</th>
+                        <th>description</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in paginator.getData() %}
+                        <tr>
+                            <td>{{ product.getId() }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.priceAsFloat | number_format(2, '.', ',') }}{% trans %}złoty{% endtrans %}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                {{ paginator_render( paginator ) }}
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+{% endblock page_content %}

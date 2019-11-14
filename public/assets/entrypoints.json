@@ -1,0 +1,26 @@
+{
+  "entrypoints": {
+    "admin_js": {
+      "js": [
+        "/assets/js/runtime-d76e7cf33c8d4a009201.js",
+        "/assets/js/admin_js-8455af17a65722a067a8.js"
+      ]
+    },
+    "admin_css": {
+      "js": [
+        "/assets/js/runtime-d76e7cf33c8d4a009201.js"
+      ],
+      "css": [
+        "/assets/css/admin_css-0488ff753bb137b1ec03.css"
+      ]
+    },
+    "admin_dataTables": {
+      "js": [
+        "/assets/js/runtime-d76e7cf33c8d4a009201.js"
+      ],
+      "css": [
+        "/assets/css/admin_dataTables-5a5c0072e1f47a883a80.css"
+      ]
+    }
+  }
+}
