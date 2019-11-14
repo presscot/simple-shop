@@ -25,6 +25,7 @@ class PaginatorTest extends TestCase
             private $product;
             public function __construct($product){$this->product = $product;}
             public function getResult(){return [$this->product];}
+            public function getSingleScalarResult(){ return 1;}
         };
 
         $queryBuilder = $this->createMock(QueryBuilder::class);
@@ -45,11 +46,17 @@ class PaginatorTest extends TestCase
             ->method("setFirstResult")
             ->willReturn($queryBuilder);
         ;
+        $queryBuilder
+            ->expects($this->any())
+            ->method("select")
+            ->willReturn($queryBuilder);
+        ;
+
         try{
             $paginator = new Paginator('test',$queryBuilder,1);
             $paginator->getPaginate();
         }catch( \Throwable $e ){
-            $this->fail("");
+            $this->fail($e);
         }
 
         $this->assertTrue(true);
